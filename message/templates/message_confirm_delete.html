@@ -10,9 +10,9 @@
     <div class="card-body">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <button type="submit" class="btn btn-outline-danger mb-3">Удалить</button>
+        <button type="submit" class="btn btn-danger mb-3">Удалить</button>
       </form>
-      <a href="{% url 'message:message_list' %}" class="btn btn-outline-dark mb-3">Назад</a>
+      <a href="{% url 'message:message_list' %}" class="btn btn-secondary mb-3">Назад</a>
     </div>
   </div>
 </div>
