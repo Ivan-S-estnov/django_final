@@ -30,8 +30,8 @@
                     </form>
                     {% endif %}
                     <a href="{% url 'mailings:mailing_detail' mailing.pk %}"
-                       class="btn btn-outline-success">Подробнее</a>
-                    <a href="{% url 'mailings:mailing_edit' mailing.pk %}" class="btn btn-outline-warning ml-3">Редактировать</a>
+                       class="btn btn-outline-primary">Подробнее</a>
+                    <a href="{% url 'mailings:mailing_edit' mailing.pk %}" class="btn btn-outline-secondary ml-3">Редактировать</a>
                     <a href="{% url 'mailings:mailing_delete' mailing.pk %}"
                        class="btn btn-outline-danger ml-1">Удалить</a>
                 </div>

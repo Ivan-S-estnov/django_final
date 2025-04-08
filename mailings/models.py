@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from message.models import Message
 from recipient.models import Recipient
 from users.models import User
@@ -16,9 +17,11 @@ class Mailing(models.Model):
         LAUNCHED: 'Запущена',
     }
 
-    first_dispatch = models.DateTimeField(verbose_name='Дата и время первой отправки', help_text='yyyy-mm-dd 00:00:00')
-    end_dispatch = models.DateTimeField(verbose_name='Дата и время окончания отправки', help_text='yyyy-mm-dd 00:00:00')
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, verbose_name='Статус')
+    first_dispatch = models.DateTimeField(verbose_name='Дата и время первой отправки', help_text='yyyy-mm-dd 00:00:00', null=True,
+        blank=True)
+    end_dispatch = models.DateTimeField(verbose_name='Дата и время окончания отправки', help_text='yyyy-mm-dd 00:00:00', null=True,
+        blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, verbose_name='Статус', default=CREATED)
     message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='Сообщение', related_name='message')
     recipients = models.ManyToManyField(Recipient, verbose_name='Получатели', related_name='recipients')
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,
@@ -33,6 +36,7 @@ class Mailing(models.Model):
             ('can_see_all_mailings', 'Can see all mailings'),
             ('can_cancel_mailing', 'Can cancel mailing'),
         ]
+
 
     def __str__(self):
         return self.status
